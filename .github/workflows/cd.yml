@@ -1,11 +1,8 @@
 name: CD Pipeline
 
 on:
-  workflow_run:
-    workflows: [CI Pipeline]
+  push:
     branches: [main]
-    types:
-      - completed
 
 jobs:
   deploy:

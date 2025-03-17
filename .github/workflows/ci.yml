@@ -1,8 +1,11 @@
 name: CI Pipeline
 
 on:
-  push:
+  workflow_run:
+    workflows: [CD Pipeline]
     branches: [main]
+    types:
+      - completed
 
 jobs:
   build:
