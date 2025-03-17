@@ -35,12 +35,12 @@ resource "aws_lambda_function" "poc5_lambda" {
   runtime       = "python3.9"
   s3_bucket     = aws_s3_bucket.lambda_bucket.bucket
   s3_key        = "lambda-poc5.zip"
-  depends_on    = [aws_s3_bucket_object.lambda_code]
+  depends_on    = [aws_s3_object.lambda_code]
 }
 
 # Upload Lambda code to S3
-resource "aws_s3_bucket_object" "lambda_code" {
+resource "aws_s3_object" "lambda_code" {
   bucket = aws_s3_bucket.lambda_bucket.bucket
   key    = "lambda-poc5.zip"
-  source = "../lambda/lambda-poc5.zip"  # Path to zipped Lambda code
+  source = "lambda-poc5.zip"  # Path to zipped Lambda code
 }
